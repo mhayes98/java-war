@@ -1,4 +1,5 @@
-public static void main(String[] args) {
-    Deck deck = new Deck();
-    deck.fillDeckWithCards();
+void main() {
+    Deck main_deck = new Deck();
+    main_deck.fillDeckWithCards();
+    main_deck.shuffleDeck();
 }

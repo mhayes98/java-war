@@ -7,7 +7,7 @@ public class Card {
 
 
     public void createCard(int value_index, int suite_index) {
-        value = value_index+=1;
+        value = value_index+2;
         suite = card_suites[suite_index];
         full_card_info = String.format("%s of %s", card_values[value_index], suite);
     }

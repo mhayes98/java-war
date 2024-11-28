@@ -1,20 +1,30 @@
 import java.util.ArrayList;
+import java.util.*;
 
 public class Deck {
     public int current_deck_size;
-    public int starting_card_count;
-
-    public void createDeckObject() {
-        ArrayList<Card> deck = new ArrayList<Card>();
-    }
+    public ArrayList<Card> deck = new ArrayList<Card>();
 
     public void fillDeckWithCards() {
-        for (int i = 0; i < 13; i++) {
-            for( int y = 0; y < 4; y++) {
+        current_deck_size = 52;
+        for (int value = 0; value < 13; value++) {
+            for(int suite = 0; suite < 4; suite++) {
                 Card card = new Card();
-                system.out.println(i, y);
-                card.createCard(i, y);
+                card.createCard(value, suite);
+                deck.add(card);
             }
         }
+    }
+
+    public void shuffleDeck() {
+        Collections.shuffle(deck);
+    }
+
+    public Card drawFromTop() {
+        return deck.removeFirst();
+    }
+
+    public void addToDeck(Card card) {
+        deck.add(card);
     }
 }
