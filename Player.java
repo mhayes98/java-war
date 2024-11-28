@@ -6,8 +6,9 @@ public class Player {
 
     public void getPlayerName() {
         Scanner user_input = new Scanner(System.in);
-        System.out.println("Enter username: ");
+        System.out.print("Enter username: ");
         name = user_input.nextLine();
+        System.out.println();
     }
 
     public void drawStartingHand(Deck main_deck) {
@@ -22,8 +23,8 @@ public class Player {
         hand.addToDeck(card);
     }
 
-    public int removeCardFromHand() {
+    public Card removeCardFromHand() {
         // Needs tested
-        return hand.drawFromTop().value;
+        return hand.drawFromTop();
     }
 }
