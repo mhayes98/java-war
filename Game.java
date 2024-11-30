@@ -7,44 +7,70 @@ public class Game {
         return main_deck;
     }
 
-    public void createPlayers(Deck main_deck) {
+    public Player createPlayerUser() {
         Player user = new Player();
         user.getPlayerName();
-
-        Player computer = new Player();
-        computer.name = "Computer";
-
-        drawPlayerStartingHands(user, computer, main_deck);
-        String card_value = playCard(user);
-        System.out.println(card_value);
+        return user;
     }
 
-    public void drawPlayerStartingHands(Player user, Player computer, Deck main_deck) {
+    public Player createNPC() {
+        Player computer = new Player();
+        computer.name = "Computer";
+        return computer;
+    }
+
+    public void distributeCardsToPlayers(Player user, Player computer, Deck main_deck) {
         user.drawStartingHand(main_deck);
         computer.drawStartingHand(main_deck);
     }
 
-    public String playRound(Player user, Player computer) {
+    public void startGame(Player user, Player computer) {
+        for (int i = 0; i < 26; i ++) {
+            playRound(user, computer);
+        }
+    }
+
+    public void playRound(Player user, Player computer) {
         Card player_card = user.removeCardFromHand();
         Card computer_card = computer.removeCardFromHand();
 
-        if (player_card.value > computer_card.value) {
-            Placeholder;
+        if (player_card.num_value > computer_card.num_value) {
+            System.out.println("Player wins!");
+            System.out.println("Computer: " + computer_card.named_value);
+            System.out.println("User: " + player_card.named_value);
+            System.out.println("\n\n");
+
+            user.addToPlayerDeck(player_card);
+            user.addToPlayerDeck(computer_card);
+
             // Declare player as winner
             // Add both cards to computers hand
             // Determine logic for size of current hand
             // Determine any other needed logic
         }
-        else if (computer_card.value > player_card.value) {
-            Placeholder;
+        else if (computer_card.num_value > player_card.num_value) {
+            System.out.println("Computer wins!");
+            System.out.println("Computer: " + computer_card.named_value);
+            System.out.println("User: " + player_card.named_value);
+            System.out.println("\n\n");
+
+            computer.addToPlayerDeck(player_card);
+            computer.addToPlayerDeck(computer_card);
         }
 
         else {
-            Placeholder;
+            System.out.println("WAR");
+            System.out.println("Computer: " + computer_card.named_value);
+            System.out.println("User: " + player_card.named_value);
+            System.out.println("\n\n");
             // Determine tie logic
             // Create 'War' function
         }
+    }
 
-        return player_card.full_card_info;
+    public void checkForEmptyDecks(Player user, Player computer) {
+        if (user.hand.size() = 0) {
+            Placeholder;
+        }
     }
 }

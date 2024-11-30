@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.ArrayList;
 
 public class Player {
     public String name;
@@ -12,7 +13,7 @@ public class Player {
     }
 
     public void drawStartingHand(Deck main_deck) {
-        for (int i = 0; i < 7; i ++){
+        for (int i = 0; i < 26; i ++){
             Card card = main_deck.drawFromTop();
             hand.addToDeck(card);
         }
@@ -23,8 +24,13 @@ public class Player {
         hand.addToDeck(card);
     }
 
+    public void addToPlayerDeck(Card card) {
+        hand.addToDeck(card);
+    }
+
     public Card removeCardFromHand() {
         // Needs tested
         return hand.drawFromTop();
     }
+
 }
