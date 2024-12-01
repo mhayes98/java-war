@@ -25,7 +25,7 @@ public class Game {
     }
 
     public void startGame(Player user, Player computer) {
-        for (int i = 0; i < 26; i ++) {
+        while (!checkForEmptyDecks(user, computer)) {
             playRound(user, computer);
         }
     }
@@ -42,11 +42,6 @@ public class Game {
 
             user.addToPlayerDeck(player_card);
             user.addToPlayerDeck(computer_card);
-
-            // Declare player as winner
-            // Add both cards to computers hand
-            // Determine logic for size of current hand
-            // Determine any other needed logic
         }
         else if (computer_card.num_value > player_card.num_value) {
             System.out.println("Computer wins!");
@@ -57,20 +52,46 @@ public class Game {
             computer.addToPlayerDeck(player_card);
             computer.addToPlayerDeck(computer_card);
         }
-
         else {
-            System.out.println("WAR");
+            System.out.println("War!");
             System.out.println("Computer: " + computer_card.named_value);
             System.out.println("User: " + player_card.named_value);
-            System.out.println("\n\n");
-            // Determine tie logic
-            // Create 'War' function
+            System.out.println("\n");
+            System.out.println("Each player will now draw 1 card and lay it face down." +
+                                "\n Each player will then draw 1 more card and play a traditional round." +
+                                "\n If either player runs out of cards during War they will lose.\n");
+            warDeclared(user, computer);
         }
     }
 
-    public void checkForEmptyDecks(Player user, Player computer) {
-        if (user.hand.size() = 0) {
-            Placeholder;
+    public void warDeclared(Player user, Player computer) {
+        if(!checkForEmptyDecks(user, computer)) {
+            user.removeCardFromHand();
+            computer.removeCardFromHand();
+            System.out.println("\n\n");
         }
+        playRound(user, computer);
     }
+
+    public boolean checkForEmptyDecks(Player user, Player computer) {
+        if (user.hand.deck.size() <= 0 || computer.hand.deck.size() <= 0) {
+            if (user.hand.deck.size() <= 0) {
+                declareWinner(computer, user);
+                return true;
+            }
+            else {
+                declareWinner(user, computer);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void declareWinner(Player winning_user, Player losing_user) {
+        System.out.println("\n\n");
+        System.out.println(losing_user.name + " is out of cards!");
+        System.out.println(winning_user.name + " has won the game!");
+        System.out.println(winning_user.hand.deck.size());
+    }
+
 }

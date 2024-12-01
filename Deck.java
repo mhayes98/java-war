@@ -25,4 +25,5 @@ public class Deck {
     public void addToDeck(Card card) {
         deck.add(card);
     }
+
 }
