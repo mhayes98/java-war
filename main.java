@@ -1,5 +1,7 @@
 void main() {
     Game game = new Game();
+    game.displayRules();
+
     Deck main_deck = game.createMainDeck();
 
     Player user = game.createPlayerUser();
@@ -7,5 +9,5 @@ void main() {
 
     game.distributeCardsToPlayers(user, computer, main_deck);
 
-    game.startGame(user, computer);
+    game.playGame(user, computer);
 }

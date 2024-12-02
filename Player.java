@@ -6,13 +6,13 @@ public class Player {
 
     public void getPlayerName() {
         Scanner user_input = new Scanner(System.in);
-        System.out.print("Enter username: ");
+        System.out.print("Enter your username: ");
         name = user_input.nextLine();
         System.out.println();
     }
 
     public void drawStartingHand(Deck main_deck) {
-        for (int i = 0; i < 2; i++){
+        for (int i = 0; i < 26; i++){
             Card card = main_deck.drawFromTop();
             hand.addToDeck(card);
         }
