@@ -23,7 +23,6 @@ public class Player {
     }
 
     public Card removeCardFromHand() {
-        // Needs tested
         return hand.drawFromTop();
     }
 
