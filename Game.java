@@ -100,12 +100,8 @@ public class Game {
 
     public void checkForEmptyDecks(Player user, Player computer) {
         if (user.hand.deck.size() <= 0 || computer.hand.deck.size() <= 0) {
-            if (user.hand.deck.size() <= 0) {
-                declareWinner(computer, user);
-            }
-            else {
-                declareWinner(user, computer);
-            }
+            Player loser = (user.hand.deck.size() <= 0 ? user : computer);
+            declareWinner(loser == user ? computer : user, loser);
         }
     }
 
